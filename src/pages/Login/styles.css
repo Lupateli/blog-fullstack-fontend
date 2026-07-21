@@ -1,0 +1,249 @@
+.login-page {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 62px 24px 72px;
+
+  background: #090d12;
+}
+
+.login-content {
+  width: 100%;
+  max-width: 350px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-heading {
+  width: 100%;
+  margin-bottom: 22px;
+
+  text-align: center;
+}
+
+.login-heading__logo {
+  display: block;
+  width: fit-content;
+
+  margin: 0 auto 22px;
+
+  color: #f8fafc;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+
+  text-decoration: none;
+}
+
+.login-heading h1 {
+  margin: 0 0 10px;
+
+  color: #f8fafc;
+
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.login-heading p {
+  margin: 0;
+
+  color: #818894;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.login-card {
+  width: 100%;
+
+  padding: 25px 23px 22px;
+
+  border: 1px solid #2a3038;
+  border-radius: 0;
+
+  background: transparent;
+  box-shadow: none;
+}
+
+.login-form {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-form__field {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-form__field > label,
+.login-form__password-header label {
+  color: #f1f5f9;
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.login-form__password-header {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.login-form__password-header a {
+  color: #737b87;
+
+  font-size: 10px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.login-form__password-header a:hover {
+  color: #19b9d2;
+}
+
+.login-form__input-wrapper {
+  width: 100%;
+}
+
+/* Remove possíveis labels internos do componente Input */
+.login-form__input-wrapper label {
+  display: none;
+}
+
+/* Faz o wrapper interno do componente ocupar toda a largura */
+.login-form__input-wrapper > div {
+  width: 100%;
+}
+
+.login-page .login-form__input-wrapper input {
+  width: 100%;
+  height: 42px;
+
+  padding: 0 12px;
+
+  border: 1px solid #2c333d;
+  border-radius: 0;
+
+  outline: none;
+
+  background: #151a22;
+  color: #f8fafc;
+
+  font-family: inherit;
+  font-size: 11px;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.login-page .login-form__input-wrapper input::placeholder {
+  color: #7a828e;
+  opacity: 1;
+}
+
+.login-page .login-form__input-wrapper input:focus {
+  border-color: #19b9d2;
+  background: #171d26;
+}
+
+.login-page .login-form button {
+  width: 100%;
+  height: 37px;
+
+  margin-top: 1px;
+  padding: 0 16px;
+
+  border: none;
+  border-radius: 0;
+
+  background: #19b9d2;
+  color: #051015;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.login-page .login-form button:hover {
+  background: #22c4dd;
+}
+
+.login-page .login-form button:active {
+  transform: translateY(1px);
+}
+
+.login-card__register {
+  margin: 15px 0 0;
+  padding-top: 16px;
+
+  border-top: 1px solid #252b33;
+
+  color: #727a86;
+
+  font-size: 10px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.login-card__register a {
+  color: #f8fafc;
+
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.login-card__register a:hover {
+  color: #19b9d2;
+}
+
+@media (max-width: 560px) {
+  .login-page {
+    align-items: flex-start;
+    padding: 48px 16px 56px;
+  }
+
+  .login-content {
+    max-width: 100%;
+  }
+
+  .login-heading__logo {
+    font-size: 36px;
+  }
+
+  .login-heading h1 {
+    font-size: 24px;
+  }
+
+  .login-card {
+    padding: 23px 20px 21px;
+  }
+}
