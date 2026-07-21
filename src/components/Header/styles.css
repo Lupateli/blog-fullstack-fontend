@@ -144,3 +144,75 @@
     font-size: 12px;
   }
 }
+.header__authenticated {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__user-name {
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.header__logout {
+  padding: 8px 14px;
+
+  border: 1px solid #2c333d;
+  border-radius: 0;
+
+  background: transparent;
+  color: #f8fafc;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.header__logout:hover {
+  border-color: #19b9d2;
+  color: #19b9d2;
+}
+.header__authenticated {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__user-name {
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.header__logout {
+  padding: 8px 14px;
+
+  border: 1px solid #2c333d;
+  border-radius: 0;
+
+  background: transparent;
+  color: #f8fafc;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.header__logout:hover {
+  border-color: #19b9d2;
+  color: #19b9d2;
+}
