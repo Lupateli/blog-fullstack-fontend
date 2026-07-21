@@ -1,13 +1,17 @@
 .header {
+  position: relative;
+  z-index: 10;
+
   width: 100%;
-  border-bottom: 1px solid #20262f;
+
+  border-bottom: 1px solid #202833;
   background-color: #080c11;
   color: #f8fafc;
 }
 
 .header__container {
-  width: min(1280px, calc(100% - 48px));
-  min-height: 68px;
+  width: min(1200px, calc(100% - 48px));
+  min-height: 72px;
   margin: 0 auto;
 
   display: flex;
@@ -17,25 +21,33 @@
 }
 
 .header__logo {
+  display: inline-flex;
+  align-items: center;
+
   color: #ffffff;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 28px;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -2px;
+  text-decoration: none;
 }
 
 .header__nav {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
 }
 
 .header__nav a {
-  color: #e5e7eb;
+  color: #dbe1e8;
   font-size: 13px;
   font-weight: 500;
-  transition: color 0.2s;
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .header__nav a:hover {
@@ -44,44 +56,67 @@
 
 .header__divider {
   width: 1px;
-  height: 18px;
-  background-color: #303741;
+  height: 20px;
+
+  background-color: #303844;
 }
 
 .header__theme-button {
+  width: 32px;
+  height: 32px;
+
   display: grid;
   place-items: center;
 
-  padding: 4px;
-  border: 0;
-  background: transparent;
+  padding: 0;
+
+  border: 1px solid transparent;
+  background-color: transparent;
   color: #cbd5e1;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .header__theme-button:hover {
+  border-color: #2b3541;
+  background-color: #111820;
   color: #ffffff;
 }
 
 .header__login {
-  padding: 8px 2px;
+  padding: 9px 4px;
 }
 
 .header__register {
-  padding: 9px 14px;
-  background-color: #10b9d3;
+  min-height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 16px;
+
+  background-color: #13c4df;
   color: #061017 !important;
+
   font-weight: 700 !important;
 }
 
 .header__register:hover {
-  background-color: #36d1e6;
-  color: #061017;
+  background-color: #20d2ed;
+  color: #061017 !important;
 }
 
 @media (max-width: 700px) {
   .header__container {
-    width: min(100% - 24px, 1280px);
-    min-height: 60px;
+    width: min(100% - 24px, 1200px);
+    min-height: 64px;
+    gap: 16px;
   }
 
   .header__logo {
@@ -98,8 +133,14 @@
     display: none;
   }
 
+  .header__theme-button {
+    width: 30px;
+    height: 30px;
+  }
+
   .header__register {
-    padding: 8px 11px;
+    min-height: 34px;
+    padding: 0 12px;
     font-size: 12px;
   }
 }
