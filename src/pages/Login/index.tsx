@@ -1,75 +1,149 @@
-import { Link } from "react-router-dom";
+import { useState, type FormEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
+import { api } from "../../services/api";
 
-import "./styles.css";
+import "../../styles/auth.css";
+
+type LoginResponse = {
+  token: string;
+  user?: {
+    id: number;
+    name: string;
+    email: string;
+  };
+};
 
 export function Login() {
-  return (
-    <main className="login-page">
-      <div className="login-content">
-        <div className="login-heading">
-          <Link
-            to="/"
-            className="login-heading__logo"
-            aria-label="Voltar para a página inicial"
-          >
-            {"<M/>"}
-          </Link>
+  const navigate = useNavigate();
 
-          <h1>Entrar na Plataforma</h1>
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-          <p>Acesse sua conta para gerenciar seus artigos</p>
-        </div>
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-        <section className="login-card">
-          <form className="login-form">
-            <div className="login-form__field">
-              <label htmlFor="email">Email</label>
+  async function handleLogin(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
 
-              <div className="login-form__input-wrapper">
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="exemplo@email.com"
-                  autoComplete="email"
-                />
-              </div>
-            </div>
+    setError("");
 
-            <div className="login-form__field">
-              <div className="login-form__password-header">
-                <label htmlFor="password">Senha</label>
+    if (!email.trim() || !password.trim()) {
+      setError("Preencha o e-mail e a senha.");
+      return;
+    }
 
-                <Link to="/forgot-password">
-                  Esqueceu a senha?
-                </Link>
-              </div>
+    try {
+      setIsLoading(true);
 
-              <div className="login-form__input-wrapper">
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="********"
-                  autoComplete="current-password"
-                />
-              </div>
-            </div>
+      const response = await api.post<LoginResponse>("/auth/login", {
+        email,
+        password,
+      });
 
-            <Button type="submit">
-              Entrar
-            </Button>
-          </form>
+      localStorage.setItem("token", response.data.token);
 
-          <p className="login-card__register">
-            Não tem uma conta?{" "}
-            <Link to="/register">Criar conta</Link>
-          </p>
-        </section>
+      if (response.data.user) {
+        localStorage.setItem(
+          "user",
+          JSON.stringify(response.data.user),
+        );
+      }
+
+      navigate("/");
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const message =
+          error.response?.data?.message ||
+          "E-mail ou senha inválidos.";
+
+        setError(message);
+        return;
+      }
+
+      setError("Não foi possível realizar o login.");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+ return (
+  <main className="auth-page">
+    <div className="auth-content">
+      <div className="auth-heading">
+        <Link
+          to="/"
+          className="auth-logo"
+          aria-label="Voltar para a página inicial"
+        >
+          {"<M/>"}
+        </Link>
+
+        <h1>Entrar na Plataforma</h1>
+
+        <p>Acesse sua conta para gerenciar seus artigos</p>
       </div>
-    </main>
+
+      <section className="auth-card">
+        <form className="auth-form" onSubmit={handleLogin}>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            label="Email"
+            placeholder="exemplo@email.com"
+            autoComplete="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            disabled={isLoading}
+          />
+
+          <div className="auth-password-field">
+            <div className="auth-password-header">
+              <label htmlFor="password">Senha</label>
+
+              <Link to="/forgot-password">
+                Esqueceu a senha?
+              </Link>
+            </div>
+
+            <input
+              id="password"
+              name="password"
+              type="password"
+              className="auth-password-input"
+              placeholder="********"
+              autoComplete="current-password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              disabled={isLoading}
+            />
+          </div>
+
+          {error && (
+            <p className="auth-error" role="alert">
+              {error}
+            </p>
+          )}
+
+          <Button
+            type="submit"
+            fullWidth
+            disabled={isLoading}
+          >
+            {isLoading ? "Entrando..." : "Entrar"}
+          </Button>
+        </form>
+
+        <p className="auth-card-footer">
+          Não tem uma conta?{" "}
+          <Link to="/cadastro">Criar conta</Link>
+        </p>
+      </section>
+    </div>
+  </main>
   );
 }
