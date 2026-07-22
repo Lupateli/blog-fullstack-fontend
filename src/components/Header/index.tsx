@@ -37,6 +37,26 @@ function getInitials(name?: string | null) {
   ].charAt(0)}`.toUpperCase();
 }
 
+function resolveAvatarUrl(avatar?: string | null) {
+  if (!avatar) {
+    return "";
+  }
+
+  if (
+    avatar.startsWith("http://") ||
+    avatar.startsWith("https://") ||
+    avatar.startsWith("blob:")
+  ) {
+    return avatar;
+  }
+
+  const backendUrl =
+    import.meta.env.VITE_BACKEND_URL ??
+    "http://localhost:3000";
+
+  return `${backendUrl}${avatar.startsWith("/") ? "" : "/"}${avatar}`;
+}
+
 export function Header() {
   const navigate = useNavigate();
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -45,6 +65,18 @@ export function Header() {
 
   const [isMenuOpen, setIsMenuOpen] =
     useState(false);
+
+  const [avatarHasError, setAvatarHasError] =
+    useState(false);
+
+  const avatarUrl = resolveAvatarUrl(user?.avatar);
+
+  const shouldShowAvatar =
+    Boolean(avatarUrl) && !avatarHasError;
+
+  useEffect(() => {
+    setAvatarHasError(false);
+  }, [user?.avatar]);
 
   useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
@@ -91,6 +123,10 @@ export function Header() {
     navigate("/");
   }
 
+  function handleAvatarError() {
+    setAvatarHasError(true);
+  }
+
   return (
     <header className="header">
       <div className="header__container">
@@ -134,7 +170,18 @@ export function Header() {
                 aria-haspopup="menu"
                 aria-expanded={isMenuOpen}
               >
-                {getInitials(user?.name)}
+                {shouldShowAvatar ? (
+                  <img
+                    src={avatarUrl}
+                    alt={`Foto de perfil de ${
+                      user?.name ?? "usuário"
+                    }`}
+                    className="header__profile-button-image"
+                    onError={handleAvatarError}
+                  />
+                ) : (
+                  getInitials(user?.name)
+                )}
               </button>
 
               {isMenuOpen && (
@@ -144,10 +191,20 @@ export function Header() {
                 >
                   <div className="header__profile-info">
                     <div className="header__profile-avatar">
-                      {getInitials(user?.name)}
+                      {shouldShowAvatar ? (
+                        <img
+                          src={avatarUrl}
+                          alt={`Foto de perfil de ${
+                            user?.name ?? "usuário"
+                          }`}
+                          onError={handleAvatarError}
+                        />
+                      ) : (
+                        getInitials(user?.name)
+                      )}
                     </div>
 
-                    <div>
+                    <div className="header__profile-text">
                       <strong>
                         {user?.name || "Usuário"}
                       </strong>
@@ -171,15 +228,16 @@ export function Header() {
                       Dashboard
                     </Link>
 
-                    <button
-                      type="button"
+                    <Link
+                      to="/profile/settings"
                       role="menuitem"
-                      disabled
-                      title="Disponível em breve"
+                      onClick={() =>
+                        setIsMenuOpen(false)
+                      }
                     >
                       <Settings size={17} />
                       Configurações
-                    </button>
+                    </Link>
                   </div>
 
                   <div className="header__profile-menu-group">

@@ -9,6 +9,7 @@ import { EditPost } from "../pages/EditPost";
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
 import { PostDetails } from "../pages/PostDetails";
+import { ProfileSettings } from "../pages/ProfileSettings";
 import { Register } from "../pages/Register";
 
 export function AppRoutes() {
@@ -44,6 +45,15 @@ export function AppRoutes() {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile/settings"
+          element={
+            <ProtectedRoute>
+              <ProfileSettings />
             </ProtectedRoute>
           }
         />

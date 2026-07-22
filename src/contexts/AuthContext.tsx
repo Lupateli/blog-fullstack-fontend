@@ -5,10 +5,14 @@ import {
   type ReactNode,
 } from "react";
 
-type User = {
+export type User = {
   id: number;
   name: string;
   email: string;
+  avatar?: string | null;
+  bio?: string | null;
+  role?: string | null;
+  createdAt?: string;
 };
 
 type AuthContextType = {
@@ -17,6 +21,7 @@ type AuthContextType = {
   isAuthenticated: boolean;
   login: (token: string, user?: User) => void;
   logout: () => void;
+  updateUser: (user: User) => void;
 };
 
 type AuthProviderProps = {
@@ -65,6 +70,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
+  function updateUser(updatedUser: User) {
+    localStorage.setItem(
+      "user",
+      JSON.stringify(updatedUser),
+    );
+
+    setUser(updatedUser);
+  }
+
   function logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -81,6 +95,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         isAuthenticated: Boolean(token),
         login,
         logout,
+        updateUser,
       }}
     >
       {children}
