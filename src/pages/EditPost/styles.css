@@ -1,0 +1,296 @@
+.edit-post-page {
+  min-height: 100vh;
+  padding: 28px 24px 100px;
+  background: #090d12;
+  color: #f8fafc;
+}
+
+.edit-post-container {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.edit-post-back {
+  display: inline-flex;
+  margin-bottom: 38px;
+  color: #dce2e9;
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.edit-post-back:hover {
+  color: #0ab9df;
+}
+
+.edit-post-header {
+  margin-bottom: 40px;
+  padding-top: 28px;
+  border-top: 1px solid #202833;
+}
+
+.edit-post-header h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.edit-post-header p {
+  margin: 6px 0 0;
+  color: #596472;
+  font-size: 0.86rem;
+}
+
+.edit-post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 52px 48px;
+  border: 1px solid #27313d;
+  background: transparent;
+}
+
+.edit-post-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.edit-post-field label {
+  color: #dce2e9;
+  font-size: 0.78rem;
+}
+
+.edit-post-field input,
+.edit-post-field textarea,
+.edit-post-field select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #27313d;
+  outline: none;
+  background: #151b24;
+  color: #e8edf3;
+  font: inherit;
+}
+
+.edit-post-field input,
+.edit-post-field select {
+  min-height: 48px;
+  padding: 0 15px;
+}
+
+.edit-post-field textarea {
+  padding: 15px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.edit-post-field textarea#summary {
+  min-height: 124px;
+}
+
+.edit-post-field textarea#content {
+  min-height: 500px;
+}
+
+.edit-post-field input:focus,
+.edit-post-field textarea:focus,
+.edit-post-field select:focus {
+  border-color: #0ab9df;
+}
+
+.edit-post-field input:disabled,
+.edit-post-field textarea:disabled,
+.edit-post-field select:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.edit-post-counter,
+.edit-post-help {
+  color: #5e6975;
+  font-size: 0.66rem;
+}
+
+.edit-post-file-input {
+  display: none;
+}
+
+.edit-post-banner-label {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 15px;
+  border: 1px solid #27313d;
+  background: #151b24;
+  color: #dfe5eb;
+  cursor: pointer;
+}
+
+.edit-post-banner-label:hover {
+  border-color: #0ab9df;
+}
+
+.edit-post-tags-control {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+.edit-post-add-tag {
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid #303a46;
+  background: transparent;
+  color: #dce2e9;
+  cursor: pointer;
+}
+
+.edit-post-add-tag:hover {
+  border-color: #0ab9df;
+  color: #0ab9df;
+}
+
+.edit-post-add-tag:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.edit-post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.edit-post-tags button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 8px;
+  border: 1px solid #36414d;
+  background: #121820;
+  color: #cbd3dc;
+  font-size: 0.67rem;
+  cursor: pointer;
+}
+
+.edit-post-tags button:hover {
+  border-color: #ef4444;
+}
+
+.edit-post-tags button span {
+  font-size: 0.9rem;
+}
+
+.edit-post-content-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: #5e6975;
+  font-size: 0.66rem;
+}
+
+.edit-post-content-info
+  span:not(:first-child)::before {
+  content: "•";
+  margin-right: 10px;
+}
+
+.edit-post-error {
+  margin: 0;
+  padding: 13px;
+  border: 1px solid #7f1d1d;
+  color: #f87171;
+  font-size: 0.8rem;
+}
+
+.edit-post-actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.edit-post-submit,
+.edit-post-cancel {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.edit-post-submit {
+  border: 1px solid #06b9db;
+  background: #06b9db;
+  color: #041116;
+  cursor: pointer;
+}
+
+.edit-post-submit:hover {
+  background: #22d3ee;
+}
+
+.edit-post-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.edit-post-cancel {
+  min-width: 150px;
+  border: 1px solid #2f3945;
+  background: #111720;
+  color: #e3e8ee;
+}
+
+.edit-post-cancel:hover {
+  border-color: #647181;
+}
+
+.edit-post-message {
+  margin: 80px 0;
+  text-align: center;
+  color: #a7b0bb;
+}
+
+.edit-post-message--error {
+  padding: 28px;
+  border: 1px solid #7f1d1d;
+  color: #f87171;
+}
+
+.edit-post-message--error a {
+  display: inline-block;
+  margin-top: 14px;
+  color: #0ab9df;
+}
+
+@media (max-width: 700px) {
+  .edit-post-page {
+    padding: 32px 16px 80px;
+  }
+
+  .edit-post-header h1 {
+    font-size: 2rem;
+  }
+
+  .edit-post-form {
+    padding: 28px 18px;
+  }
+
+  .edit-post-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-post-cancel {
+    min-width: 0;
+  }
+
+  .edit-post-tags-control {
+    grid-template-columns: 1fr;
+  }
+}

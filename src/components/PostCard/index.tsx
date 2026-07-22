@@ -10,13 +10,8 @@ import "./styles.css";
 type PostCardProps = {
   id: number;
   title: string;
-
-  // Texto curto exibido no card
   summary: string;
-
-  // Conteúdo completo usado para calcular o tempo de leitura
   content: string;
-
   image?: string | null;
   category?: string | null;
 
@@ -24,7 +19,7 @@ type PostCardProps = {
     name: string;
   } | null;
 
-  variant?: "featured" | "recent";
+  variant?: "featured" | "recent" | "list";
   createdAt: string;
   views?: number;
   likes?: number;
@@ -55,11 +50,9 @@ function calculateReadingTime(content: string) {
     .split(/\s+/)
     .filter(Boolean).length;
 
-  const wordsPerMinute = 200;
-
   return Math.max(
     1,
-    Math.ceil(numberOfWords / wordsPerMinute),
+    Math.ceil(numberOfWords / 200),
   );
 }
 
@@ -70,7 +63,10 @@ function formatNumber(value?: number) {
       : 0;
 
   return new Intl.NumberFormat("pt-BR", {
-    notation: safeValue >= 1000 ? "compact" : "standard",
+    notation:
+      safeValue >= 1000
+        ? "compact"
+        : "standard",
     maximumFractionDigits: 1,
   }).format(safeValue);
 }
@@ -88,22 +84,32 @@ export function PostCard({
   views = 0,
   likes = 0,
 }: PostCardProps) {
-  const readingTime = calculateReadingTime(content);
-  const formattedDate = formatPostDate(createdAt);
-  const authorName = author?.name || "Autor desconhecido";
+  const readingTime =
+    calculateReadingTime(content);
+
+  const formattedDate =
+    formatPostDate(createdAt);
+
+  const authorName =
+    author?.name || "Autor desconhecido";
+
+  const shouldShowImage =
+    (variant === "featured" ||
+      variant === "list") &&
+    Boolean(image);
 
   return (
     <article
       className={`post-card post-card--${variant}`}
     >
-      {variant === "featured" && image && (
+      {shouldShowImage && (
         <Link
           to={`/posts/${id}`}
           className="post-card__image-link"
           aria-label={`Abrir artigo ${title}`}
         >
           <img
-            src={image}
+            src={image || ""}
             alt={`Imagem de capa do artigo ${title}`}
             className="post-card__image"
           />
@@ -146,17 +152,25 @@ export function PostCard({
               className="post-card__stat"
               title={`Tempo estimado: ${readingTime} minutos`}
             >
-              <Clock3 size={14} aria-hidden="true" />
+              <Clock3
+                size={14}
+                aria-hidden="true"
+              />
 
               {readingTime}{" "}
-              {readingTime === 1 ? "min" : "mins"}
+              {readingTime === 1
+                ? "min"
+                : "mins"}
             </span>
 
             <span
               className="post-card__stat"
               title={`${views} visualizações`}
             >
-              <Eye size={14} aria-hidden="true" />
+              <Eye
+                size={14}
+                aria-hidden="true"
+              />
 
               {formatNumber(views)}
             </span>
@@ -165,7 +179,10 @@ export function PostCard({
               className="post-card__stat"
               title={`${likes} curtidas`}
             >
-              <Heart size={14} aria-hidden="true" />
+              <Heart
+                size={14}
+                aria-hidden="true"
+              />
 
               {formatNumber(likes)}
             </span>

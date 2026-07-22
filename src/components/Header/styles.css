@@ -1,6 +1,6 @@
 .header {
   position: relative;
-  z-index: 10;
+  z-index: 100;
 
   width: 100%;
 
@@ -39,7 +39,7 @@
   gap: 20px;
 }
 
-.header__nav a {
+.header__nav > a {
   color: #dbe1e8;
   font-size: 13px;
   font-weight: 500;
@@ -50,14 +50,13 @@
     background-color 0.2s ease;
 }
 
-.header__nav a:hover {
+.header__nav > a:hover {
   color: #13c4df;
 }
 
 .header__divider {
   width: 1px;
   height: 20px;
-
   background-color: #303844;
 }
 
@@ -112,6 +111,147 @@
   color: #061017 !important;
 }
 
+.header__profile {
+  position: relative;
+}
+
+.header__profile-button {
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: 1px solid #2a3440;
+  background: #151b24;
+  color: #f8fafc;
+
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.header__profile-button:hover,
+.header__profile-button--open {
+  border-color: #13c4df;
+  color: #13c4df;
+}
+
+.header__profile-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+
+  width: 270px;
+
+  border: 1px solid #303844;
+  background: #0a0f15;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.42);
+}
+
+.header__profile-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 16px;
+  border-bottom: 1px solid #303844;
+}
+
+.header__profile-avatar {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+
+  display: grid;
+  place-items: center;
+
+  background: #1a2330;
+  color: #f8fafc;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.header__profile-info > div:last-child {
+  min-width: 0;
+}
+
+.header__profile-info strong,
+.header__profile-info span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header__profile-info strong {
+  color: #f8fafc;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.header__profile-info span {
+  margin-top: 4px;
+  color: #8793a1;
+  font-size: 0.72rem;
+}
+
+.header__profile-menu-group {
+  padding: 8px 0;
+  border-bottom: 1px solid #303844;
+}
+
+.header__profile-menu-group:last-child {
+  border-bottom: 0;
+}
+
+.header__profile-menu-group a,
+.header__profile-menu-group button {
+  width: 100%;
+  min-height: 44px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0 16px;
+
+  border: 0;
+  background: transparent;
+  color: #dbe1e8;
+
+  font: inherit;
+  font-size: 0.8rem;
+  text-align: left;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.header__profile-menu-group a:hover,
+.header__profile-menu-group button:hover:not(:disabled) {
+  background: #111820;
+  color: #13c4df;
+}
+
+.header__profile-menu-group button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 @media (max-width: 700px) {
   .header__container {
     width: min(100% - 24px, 1200px);
@@ -143,84 +283,13 @@
     padding: 0 12px;
     font-size: 12px;
   }
-}
-.header__authenticated {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
 
-.header__user-name {
-  color: #f8fafc;
-  font-size: 13px;
-  font-weight: 500;
-}
+  .header__profile-menu {
+    position: fixed;
+    top: 64px;
+    right: 12px;
+    left: 12px;
 
-.header__logout {
-  padding: 8px 14px;
-
-  border: 1px solid #2c333d;
-  border-radius: 0;
-
-  background: transparent;
-  color: #f8fafc;
-
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 500;
-
-  cursor: pointer;
-
-  transition:
-    border-color 0.2s ease,
-    color 0.2s ease;
-}
-
-.header__logout:hover {
-  border-color: #19b9d2;
-  color: #19b9d2;
-}
-.header__authenticated {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.header__user-name {
-  color: #f8fafc;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.header__logout {
-  padding: 8px 14px;
-
-  border: 1px solid #2c333d;
-  border-radius: 0;
-
-  background: transparent;
-  color: #f8fafc;
-
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 500;
-
-  cursor: pointer;
-
-  transition:
-    border-color 0.2s ease,
-    color 0.2s ease;
-}
-
-.header__logout:hover {
-  border-color: #19b9d2;
-  color: #19b9d2;
-}
-.header__new-post {
-  padding: 8px 12px;
-  background: #05bddd;
-  color: #041017;
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-decoration: none;
+    width: auto;
+  }
 }

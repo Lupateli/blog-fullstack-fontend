@@ -44,9 +44,12 @@ type Comment = {
   id: number;
   content: string;
   createdAt: string;
+  likesCount?: number;
+  likedByCurrentUser?: boolean;
   author?: {
     id: number;
     name: string;
+    avatar?: string | null;
   } | null;
 };
 
@@ -855,11 +858,13 @@ export function PostDetails() {
 
         <section className="post-comments">
           <header className="post-comments__header">
-            <h2>Comentários ({comments.length})</h2>
+            <h2>
+              Comentário ({comments.length})
+            </h2>
           </header>
 
           {!isAuthenticated ? (
-            <div className="post-comments__login">
+            <div className="post-comments__login-card">
               <p>Faça login para comentar</p>
 
               <Link
@@ -871,7 +876,7 @@ export function PostDetails() {
             </div>
           ) : (
             <form
-              className="post-comments__form"
+              className="post-comments__form-card"
               onSubmit={handleSubmitComment}
             >
               <label htmlFor="comment-content">
@@ -935,8 +940,7 @@ export function PostDetails() {
               !commentsError &&
               comments.length === 0 && (
                 <p className="post-comments__message">
-                  Ainda não há comentários. Seja o primeiro
-                  a comentar.
+                  Ainda não há comentários. Seja o primeiro a comentar.
                 </p>
               )}
 
@@ -946,22 +950,45 @@ export function PostDetails() {
                 const commentAuthorName =
                   comment.author?.name || "Usuário";
 
+                const commentLikes =
+                  comment.likesCount ?? 0;
+
                 return (
                   <article
                     key={comment.id}
                     className="post-comment"
                   >
-                    <div className="post-comment__author">
-                      <div className="post-comment__avatar">
-                        {getInitials(commentAuthorName)}
+                    <div className="post-comment__top">
+                      <div className="post-comment__author">
+                        {comment.author?.avatar ? (
+                          <img
+                            src={comment.author.avatar}
+                            alt={commentAuthorName}
+                            className="post-comment__avatar-image"
+                          />
+                        ) : (
+                          <div className="post-comment__avatar">
+                            {getInitials(commentAuthorName)}
+                          </div>
+                        )}
+
+                        <div className="post-comment__author-text">
+                          <strong>{commentAuthorName}</strong>
+                          <time dateTime={comment.createdAt}>
+                            {formatPostDate(comment.createdAt)}
+                          </time>
+                        </div>
                       </div>
 
-                      <div>
-                        <strong>{commentAuthorName}</strong>
-                        <time dateTime={comment.createdAt}>
-                          {formatPostDate(comment.createdAt)}
-                        </time>
-                      </div>
+                      <button
+                        type="button"
+                        className="post-comment__like"
+                        aria-label="Curtir comentário"
+                        title="Curtidas em comentários ainda não implementadas"
+                      >
+                        <Heart size={15} />
+                        <span>{commentLikes}</span>
+                      </button>
                     </div>
 
                     <p className="post-comment__content">
