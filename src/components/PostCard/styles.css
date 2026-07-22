@@ -1,0 +1,180 @@
+.post-card {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid #202833;
+  background: #0d1117;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.post-card:hover {
+  border-color: #334155;
+  transform: translateY(-2px);
+}
+
+.post-card--featured {
+  flex-direction: column;
+  height: 100%;
+}
+
+.post-card--recent {
+  align-items: stretch;
+  width: 100%;
+}
+
+.post-card__image-link {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.post-card__image {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.post-card:hover .post-card__image {
+  transform: scale(1.025);
+}
+
+.post-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.post-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  color: #778391;
+  font-size: 0.72rem;
+}
+
+.post-card__category {
+  color: #9ca3af;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.post-card__title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-card__title {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  transition: color 0.2s ease;
+}
+
+.post-card__title-link:hover .post-card__title {
+  color: #cbd5e1;
+}
+
+.post-card__summary {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 12px 0 20px;
+  color: #929dab;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.post-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #202833;
+}
+
+.post-card__author {
+  overflow: hidden;
+  color: #cbd5e1;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.post-card__stats {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+}
+
+.post-card__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #778391;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.post-card__stat svg {
+  flex-shrink: 0;
+}
+
+/* Card de artigo recente */
+
+.post-card--recent .post-card__body {
+  padding: 18px 20px;
+}
+
+.post-card--recent .post-card__summary {
+  margin-bottom: 16px;
+  -webkit-line-clamp: 2;
+}
+
+.post-card--recent .post-card__title {
+  font-size: 1.05rem;
+}
+
+/*
+  Não use nth-child com display: none aqui.
+  Isso poderia esconder visualizações ou curtidas.
+*/
+
+@media (max-width: 700px) {
+  .post-card__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .post-card__stats {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 420px) {
+  .post-card__body {
+    padding: 16px;
+  }
+
+  .post-card__stats {
+    gap: 9px;
+  }
+
+  .post-card__stat {
+    font-size: 0.65rem;
+  }
+}

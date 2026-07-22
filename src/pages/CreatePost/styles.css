@@ -1,0 +1,371 @@
+.create-post-page {
+  min-height: 100vh;
+  padding: 28px 24px 72px;
+  background: #090d12;
+  color: #f8fafc;
+}
+
+.create-post-container {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.create-post-header {
+  margin-bottom: 52px;
+}
+
+.create-post-header h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.create-post-header p {
+  margin: 6px 0 0;
+  color: #596472;
+  font-size: 0.86rem;
+}
+
+.create-post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 52px 48px 0;
+  border: 1px dashed #0799d6;
+  background: transparent;
+}
+
+.create-post-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.create-post-field label {
+  color: #dce2e9;
+  font-size: 0.78rem;
+}
+
+.create-post-field input,
+.create-post-field textarea,
+.create-post-field select {
+  width: 100%;
+  border: 1px solid #27313d;
+  outline: none;
+  background: #151b24;
+  color: #e8edf3;
+  font: inherit;
+}
+
+.create-post-field input,
+.create-post-field select {
+  min-height: 48px;
+  padding: 0 15px;
+}
+
+.create-post-field textarea {
+  padding: 15px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.create-post-field textarea#summary {
+  min-height: 124px;
+}
+
+.create-post-field textarea#content {
+  min-height: 500px;
+}
+
+.create-post-field input:focus,
+.create-post-field textarea:focus,
+.create-post-field select:focus {
+  border-color: #0ab9df;
+}
+
+.create-post-field select {
+  appearance: auto;
+}
+
+.create-post-counter {
+  color: #5e6975;
+  font-size: 0.66rem;
+}
+
+.create-post-file-input {
+  display: none;
+}
+
+.create-post-banner-label {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  border: 1px solid #27313d;
+  background: #151b24;
+  color: #dfe5eb;
+  cursor: pointer;
+}
+
+.create-post-banner-label:hover {
+  border-color: #0ab9df;
+}
+
+.create-post-tags-control {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+.create-post-add-tag {
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid #303a46;
+  background: transparent;
+  color: #dce2e9;
+  cursor: pointer;
+}
+
+.create-post-add-tag:hover {
+  border-color: #0ab9df;
+  color: #0ab9df;
+}
+
+.create-post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.create-post-tags button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 8px;
+  border: 1px solid #36414d;
+  background: #121820;
+  color: #cbd3dc;
+  font-size: 0.67rem;
+  cursor: pointer;
+}
+
+.create-post-tags button:hover {
+  border-color: #ef4444;
+}
+
+.create-post-tags button span {
+  font-size: 0.9rem;
+}
+
+.create-post-content-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: #5e6975;
+  font-size: 0.66rem;
+}
+
+.create-post-content-info span:not(:first-child)::before {
+  content: "•";
+  margin-right: 10px;
+}
+
+.create-post-error {
+  margin: 0;
+  padding: 13px;
+  border: 1px solid #7f1d1d;
+  color: #f87171;
+  font-size: 0.8rem;
+}
+
+.create-post-actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  margin: 32px -48px 0;
+  transform: translateY(58px);
+}
+
+.create-post-submit,
+.create-post-cancel {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.create-post-submit {
+  border: 1px solid #06b9db;
+  background: #06b9db;
+  color: #041116;
+  cursor: pointer;
+}
+
+.create-post-submit:hover {
+  background: #22d3ee;
+}
+
+.create-post-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.create-post-cancel {
+  min-width: 150px;
+  border: 1px solid #2f3945;
+  background: #111720;
+  color: #e3e8ee;
+}
+
+.create-post-cancel:hover {
+  border-color: #647181;
+}
+
+@media (max-width: 700px) {
+  .create-post-page {
+    padding: 32px 16px 70px;
+  }
+
+  .create-post-header {
+    margin-bottom: 34px;
+  }
+
+  .create-post-header h1 {
+    font-size: 2rem;
+  }
+
+  .create-post-form {
+    padding: 28px 18px 0;
+  }
+
+  .create-post-actions {
+    grid-template-columns: 1fr;
+    margin-right: -18px;
+    margin-left: -18px;
+  }
+
+  .create-post-cancel {
+    min-width: 0;
+  }
+
+  .create-post-tags-control {
+    grid-template-columns: 1fr;
+  }
+}
+.post-details__author-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 24px;
+  padding: 18px 0;
+  border-top: 1px solid #202833;
+  border-bottom: 1px solid #202833;
+}
+
+.post-details__author-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.post-details__avatar {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1b2430;
+  color: #f8fafc;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.post-details__author-info strong {
+  color: #f8fafc;
+  font-size: 0.82rem;
+}
+
+.post-details__author-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 5px;
+  color: #778391;
+  font-size: 0.68rem;
+}
+
+.post-details__author-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.post-details__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-details__action {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #8793a1;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.post-details__action:hover {
+  color: #f8fafc;
+  transform: translateY(-1px);
+}
+
+.post-details__action--liked {
+  color: #f87171;
+}
+
+.post-details__action:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.post-details__stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  padding: 13px 0 34px;
+  color: #778391;
+  font-size: 0.72rem;
+}
+
+.post-details__stats span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+@media (max-width: 600px) {
+  .post-details__author-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .post-details__actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

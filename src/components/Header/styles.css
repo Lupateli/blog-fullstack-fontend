@@ -216,3 +216,11 @@
   border-color: #19b9d2;
   color: #19b9d2;
 }
+.header__new-post {
+  padding: 8px 12px;
+  background: #05bddd;
+  color: #041017;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+}

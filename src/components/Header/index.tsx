@@ -42,6 +42,9 @@ export function Header() {
 
           {isAuthenticated ? (
             <div className="header__authenticated">
+              <Link to="/posts/new" className="header__new-post">
+                Novo artigo
+              </Link>
               <span className="header__user-name">
                 {user?.name || "Usuário"}
               </span>
