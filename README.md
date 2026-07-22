@@ -1,75 +1,174 @@
-# React + TypeScript + Vite
+# Mind Group - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend da plataforma **Mind Group**, desenvolvido utilizando React, TypeScript e Vite.
 
-Currently, two official plugins are available:
+O projeto consome a API do backend para oferecer autenticação, gerenciamento de artigos e edição de perfil.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Tecnologias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- Vite
+- React Router
+- Axios
+- Lucide React
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Funcionalidades
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Autenticação
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Login
+- Cadastro
+- Logout
+- Rotas protegidas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Home
 
-```
+- Listagem de artigos
+- Destaques
+- Navegação
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Artigos
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Visualização completa
+- Comentários
+- Curtidas
+- Contador de visualizações
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Dashboard
+
+- Estatísticas do usuário
+- Lista de artigos publicados
+- Gerenciamento dos artigos
+
+### Perfil
+
+- Alteração de nome
+- Alteração de e-mail
+- Alteração da biografia
+- Upload de foto de perfil
+- Pré-visualização da imagem
+
+### Interface
+
+- Responsiva
+- Menu de usuário
+- Avatar dinâmico
+- Navegação entre páginas
+
+---
+
+## Estrutura
 
 ```
+src
+│
+├── assets
+├── components
+├── contexts
+├── pages
+├── routes
+├── services
+├── styles
+└── main.tsx
+```
+
+---
+
+## Instalação
+
+Clone o projeto
+
+```bash
+git clone https://github.com/Lupateli/blog-fullstack-frontend.git
+```
+
+Entre na pasta
+
+```bash
+cd blog-fullstack-frontend
+```
+
+Instale as dependências
+
+```bash
+npm install
+```
+
+Configure o arquivo `.env`
+
+```env
+VITE_API_URL=http://localhost:3000/api
+VITE_BACKEND_URL=http://localhost:3000
+```
+
+Execute
+
+```bash
+npm run dev
+```
+
+---
+
+## Scripts
+
+```bash
+npm run dev
+```
+
+Inicia o servidor.
+
+```bash
+npm run build
+```
+
+Gera a versão de produção.
+
+```bash
+npm run preview
+```
+
+Visualiza a build.
+
+```bash
+npm run lint
+```
+
+Executa o ESLint.
+
+---
+
+## Comunicação com a API
+
+A aplicação utiliza Axios para comunicação com o backend.
+
+Principais recursos consumidos:
+
+- Autenticação
+- Usuários
+- Artigos
+- Comentários
+- Curtidas
+- Dashboard
+
+---
+
+## Próximas melhorias
+
+- Tema claro/escuro
+- Recuperação de senha
+- Alteração de senha
+- Upload de banner dos artigos
+- Paginação
+- Sistema de notificações
+- Infinite Scroll
+
+---
+
+## Autor
+
+Desenvolvido por **Gabriel Lupateli**
