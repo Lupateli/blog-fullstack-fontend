@@ -104,7 +104,7 @@ export function Home() {
   const featuredPosts = posts.slice(0, 3);
 
   // Começa no quarto artigo para não repetir os destaques.
-  const recentPosts = posts.slice(3, 9);
+  const recentPosts = posts.slice(0, 9);
 
   return (
     <main className="home-page">

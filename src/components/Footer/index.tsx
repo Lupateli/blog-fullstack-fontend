@@ -1,8 +1,8 @@
 import {
-  BriefcaseBusiness,
-  Code2,
-  MessageCircle,
-} from "lucide-react";
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import "./styles.css";
@@ -38,32 +38,29 @@ export function Footer() {
 
               <div className="footer__socials">
                 <a
-                  href="https://www.linkedin.com"
+                  href="https://github.com/Lupateli"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="LinkedIn"
                 >
-                  <BriefcaseBusiness size={18} />
+                  <FaGithub size={18} />
                 </a>
 
                 <a
-                  href="https://github.com"
+                  href="https://linkedin.com/in/seu-link"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="GitHub"
                 >
-                  <Code2 size={18} />
+                  <FaLinkedin size={18} />
                 </a>
 
                 <a
-                  href="https://twitter.com"
+                  href="https://x.com/seuusuario"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="Twitter"
                 >
-                  <MessageCircle size={18} />
+                  <FaTwitter size={18} />
                 </a>
-              </div>
+              </div>  
             </div>
           </div>
         </div>

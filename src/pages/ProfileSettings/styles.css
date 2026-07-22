@@ -113,7 +113,7 @@
   background: transparent;
   color: #78828e;
   font: inherit;
-  font-size: 0.67rem;
+  font-size: 0.95rem;
   cursor: pointer;
 }
 
@@ -145,7 +145,7 @@
   width: fit-content;
   margin-bottom: 8px;
   color: #e4e6e8;
-  font-size: 0.67rem;
+  font-size: 0.95rem;
 }
 
 .profile-form__field input,
