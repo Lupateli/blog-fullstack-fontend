@@ -1,81 +1,36 @@
 # Mind Group - Frontend
 
-Frontend da plataforma **Mind Group**, desenvolvido utilizando React, TypeScript e Vite.
+Frontend desenvolvido para o Case Técnico da Mind Group.
 
-O projeto consome a API do backend para oferecer autenticação, gerenciamento de artigos e edição de perfil.
+Aplicação React responsável pela interface do sistema de gerenciamento de posts.
 
 ---
 
-## Tecnologias
+##   Tecnologias
 
 - React
 - TypeScript
 - Vite
-- React Router
 - Axios
-- Lucide React
+- React Router DOM
+- CSS
+- Docker
+- Nginx
 
 ---
 
 ## Funcionalidades
 
-### Autenticação
-
-- Login
 - Cadastro
-- Logout
-- Rotas protegidas
-
-### Home
-
-- Listagem de artigos
-- Destaques
-- Navegação
-
-### Artigos
-
-- Visualização completa
+- Login
+- Perfil
+- Atualização de perfil
+- Upload de avatar
+- Dashboard
+- CRUD de Posts
 - Comentários
 - Curtidas
-- Contador de visualizações
-
-### Dashboard
-
-- Estatísticas do usuário
-- Lista de artigos publicados
-- Gerenciamento dos artigos
-
-### Perfil
-
-- Alteração de nome
-- Alteração de e-mail
-- Alteração da biografia
-- Upload de foto de perfil
-- Pré-visualização da imagem
-
-### Interface
-
-- Responsiva
-- Menu de usuário
-- Avatar dinâmico
-- Navegação entre páginas
-
----
-
-## Estrutura
-
-```
-src
-│
-├── assets
-├── components
-├── contexts
-├── pages
-├── routes
-├── services
-├── styles
-└── main.tsx
-```
+- Visualização de Posts
 
 ---
 
@@ -84,7 +39,7 @@ src
 Clone o projeto
 
 ```bash
-git clone https://github.com/Lupateli/blog-fullstack-frontend.git
+git clone https://github.com/SEU_USUARIO/blog-fullstack-frontend.git
 ```
 
 Entre na pasta
@@ -99,11 +54,16 @@ Instale as dependências
 npm install
 ```
 
-Configure o arquivo `.env`
+Crie o arquivo
 
-```env
-VITE_API_URL=http://localhost:3000/api
-VITE_BACKEND_URL=http://localhost:3000
+```text
+.env
+```
+
+Baseado em
+
+```text
+.env.example
 ```
 
 Execute
@@ -114,61 +74,54 @@ npm run dev
 
 ---
 
-## Scripts
+# Docker
+
+Construir
 
 ```bash
-npm run dev
+docker build -t mind-group-frontend .
 ```
 
-Inicia o servidor.
+Executar
 
 ```bash
-npm run build
+docker run -d --name mind-group-frontend -p 8080:80 mind-group-frontend
 ```
 
-Gera a versão de produção.
+Abrir
 
-```bash
-npm run preview
 ```
-
-Visualiza a build.
-
-```bash
-npm run lint
+http://localhost:8080
 ```
-
-Executa o ESLint.
 
 ---
 
-## Comunicação com a API
+## Variáveis de ambiente
 
-A aplicação utiliza Axios para comunicação com o backend.
-
-Principais recursos consumidos:
-
-- Autenticação
-- Usuários
-- Artigos
-- Comentários
-- Curtidas
-- Dashboard
+```env
+VITE_API_URL=http://localhost:3000
+VITE_BACKEND_URL=http://localhost:3000
+```
 
 ---
 
-## Próximas melhorias
+## Estrutura
 
-- Tema claro/escuro
-- Recuperação de senha
-- Alteração de senha
-- Upload de banner dos artigos
-- Paginação
-- Sistema de notificações
-- Infinite Scroll
+```
+src
+│
+├── assets
+├── components
+├── contexts
+├── hooks
+├── pages
+├── routes
+├── services
+└── App.tsx
+```
 
 ---
 
-## Autor
+## Desenvolvedor
 
-Desenvolvido por **Gabriel Lupateli**
+Gabriel Lupateli
